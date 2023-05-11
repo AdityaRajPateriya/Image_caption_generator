@@ -15,7 +15,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 # openai api_Key and model name for generating multiple captions
-openai.api_key = "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"
+openai.api_key = "Open AI key"
 openai_model = "text-davinci-002"
 
 
