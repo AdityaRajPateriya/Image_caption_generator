@@ -54,6 +54,7 @@ You need to provide your OpenAI API key and the model name for generating captio
 3. I have used openai_model= "text-davinci-002"
 
 ## About the Author
+Information Science engineer currently in 3rd year who is passionate about artificial intelligence and machine learning, with good skills in NLP, regression tasks, data analysis, and similer fields.
 This script was created by Aditya raj Pateriya. If you have any questions or suggestions, feel free to reach out.
 Enjoy generating cool captions for your images!
   
