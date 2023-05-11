@@ -55,7 +55,8 @@ def prediction(img_list):
     gen_kwargs = {"max_length": max_length, "num_beams": num_beams}
 
     img = []                                        # creating empty list to hold all images
-
+    # tqdm is used here to provide a progress bar while iterating over the img_list
+    # It helps track the progress of the loop and estimate the time remaining
     for image in tqdm(img_list):
         i_image = Image.open(image)                 # opening and storing image in i_image variable
         st.image(i_image, width=200)                # Displaying the uploaded image
