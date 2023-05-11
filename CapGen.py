@@ -95,7 +95,7 @@ def upload():
             for i, caption_list in enumerate(captions):
                 st.write(f"Image {i+1} Captions:")
                 for j, caption in enumerate(caption_list):
-                    st.write(f"Caption {j+1}: {caption}")
+                    st.write(f"{caption}")
 
 
 def main():
