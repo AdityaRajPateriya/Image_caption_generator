@@ -13,7 +13,7 @@ Make sure you have the following dependencies installed:
 - PIL (Python Imaging Library)
 - torch
 
-You can install the dependencies by running the following command:
+You can install the dependencies by running the following command:/n
 pip insntall -r requirements.txt
 
 ## Usage
