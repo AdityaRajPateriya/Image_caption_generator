@@ -15,32 +15,38 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 # openai api_Key and model name for generating multiple captions
-openai.api_key = "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"
+openai.api_key = "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"
 openai_model = "text-davinci-002"
 
 
 # Defining method to generate caption
-def caption_generator(des):
-    caption_prompt = (''' Please generate three unique and creative captions to use on instagram for a photo that shows
-    ''' + des + '''. The captions should be fun and creative.
-    Captions:
-    1.
-    2.
-    3.
-    ''')
+def caption_generator(descriptions):
+    captions = []
+    for des in descriptions:
+        caption_prompt = (
+            ''' Please generate three unique and creative captions to use on Instagram for a photo that shows '''
+            + des + '''. The captions should be fun and creative.
+            Captions:
+            1.
+            2.
+            3.
+            '''
+        )
 
-    # caption generation
-    response = openai.Completion.create(
-        engine=openai_model,
-        prompt=caption_prompt,
-        max_tokens=(175 * 3),
-        n=1,
-        stop=None,
-        temperature=0.7
-    )
+        # Caption generation
+        response = openai.Completion.create(
+            engine=openai_model,
+            prompt=caption_prompt,
+            max_tokens=(175 * 3),
+            n=1,
+            stop=None,
+            temperature=0.7
+        )
 
-    caption = response.choices[0].text.strip().split("\n")
-    return caption
+        caption = response.choices[0].text.strip().split("\n")
+        captions.append(caption)
+    return captions
+
 
 
 def prediction(img_list):
@@ -76,19 +82,20 @@ def upload():
     # from uploader inside tab
     with st.form("uploader"):
         # Image input
-        image = st.file_uploader("upload Images", accept_multiple_files=True, type=["jpg", "png", "jpeg"])
+        images = st.file_uploader("Upload Images", accept_multiple_files=True, type=["jpg", "png", "jpeg"])
         # generate button
         submit = st.form_submit_button("Generate")
-        if submit:                                          # checking if the button is clicked
-            description = prediction(image)
-
-            st.subheader("description for the image:")
-            for i, caption in enumerate(description):
-                st.write(caption)
-            st.subheader("captions for this image are:")
-            captions = caption_generator(description[0])    # Function call to generate caption
-            for caption in captions:
-                st.write(caption)
+        if submit:
+            descriptions = prediction(images)  # Generate descriptions for the uploaded images
+            st.subheader("Descriptions for the images:")
+            for i, description in enumerate(descriptions):
+                st.write(f"Image {i+1}: {description}")
+            st.subheader("Captions for the images:")
+            captions = caption_generator(descriptions)  # Generate captions for the descriptions
+            for i, caption_list in enumerate(captions):
+                st.write(f"Image {i+1} Captions:")
+                for j, caption in enumerate(caption_list):
+                    st.write(f"Caption {j+1}: {caption}")
 
 
 def main():
