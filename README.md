@@ -47,10 +47,11 @@ To use the image caption generator, follow these steps:
   
 5. The script displays the generated descriptions and captions using the Streamlit interface.
   Configuration
-  
+## Caution  
 You need to provide your OpenAI API key and the model name for generating captions in the script. Modify the following lines in the code to add your credentials:
-    openai.api_key = "YOUR_OPENAI_API_KEY"
-    openai_model = "YOUR_OPENAI_MODEL_NAME"
+1. openai.api_key = "YOUR_OPENAI_API_KEY"
+2. openai_model = "YOUR_OPENAI_MODEL_NAME"
+3. I have used openai_model= "text-davinci-002"
 
 ## About the Author
 This script was created by Aditya raj Pateriya. If you have any questions or suggestions, feel free to reach out.
