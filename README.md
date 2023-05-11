@@ -24,14 +24,13 @@ To use the image caption generator, follow these steps:
 1. Clone the repository and navigate to the project directory.
 2. Run the script by executing the following command:
 
-```shell
 streamlit run CapGen.py
 
-1.The script will start a Streamlit server and open a web interface in your     browser.
+1.The script will start a Streamlit server and open a web interface in your browser.
 2.Click on the "Uload any Image" tab to upload your images.
-  Select one or multiple images (in JPG, PNG, or JPEG format) using the file     uploader.
+  Select one or multiple images (in JPG, PNG, or JPEG format) using the file uploader.
 3.Click the "Generate" button to generate captions for the uploaded images.
-  The script will display the generated descriptions and captions for each       image.
+  The script will display the generated descriptions and captions for each image.
 
 How It Works
 1.The script uses the Salesforce BLIP Image Captioning model to generate descriptions for the uploaded images. It then uses the     OpenAI API to generate creative captions based on the descriptions.
